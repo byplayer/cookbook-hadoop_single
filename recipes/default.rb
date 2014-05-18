@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-%w(gcc).each do |pkg|
+%w(g++).each do |pkg|
   dpkg_package pkg do
     action :install
   end
