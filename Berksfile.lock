@@ -1,0 +1,9 @@
+DEPENDENCIES
+  hadoop_single
+    path: .
+    metadata: true
+
+GRAPH
+  hadoop_single (0.1.0)
+    java (>= 0.0.0)
+  java (1.22.0)
