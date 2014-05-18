@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 %w(g++).each do |pkg|
-  dpkg_package pkg do
+  apt_package pkg do
     action :install
   end
 end
