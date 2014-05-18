@@ -33,12 +33,26 @@ template "#{node['hadoop']['home']}/conf/hadoop-env.sh" do
 end
 
 template "#{node['hadoop']['home']}/conf/core-site.xml" do
+  fs_default_host = node['hadoop']['fs_default']['host']
+  fs_default_host ||=
+    node['network']['interfaces']['eth0']['addresses'].find do
+      |_k, v| v[:family] == 'inet'
+    end.first
+  fs_default_port = node['hadoop']['fs_default']['port']
+
   variables tmp_dir: node['hadoop']['tmp'],
-            fs_default: node['hadoop']['fs_default']
+            fs_default: "hdfs://#{fs_default_host}:#{fs_default_port}"
 end
 
 template "#{node['hadoop']['home']}/conf/mapred-site.xml" do
-  variables mapred_tracker: node['hadoop']['mapred_tracker']
+  host = node['hadoop']['mapred_tracker']['host']
+  host ||=
+    node['network']['interfaces']['eth0']['addresses'].find do
+      |_k, v| v[:family] == 'inet'
+    end.first
+  port = node['hadoop']['mapred_tracker']['port']
+
+  variables mapred_tracker: "#{host}:#{port}"
 end
 
 template "#{node['hadoop']['home']}/conf/hdfs-site.xml" do

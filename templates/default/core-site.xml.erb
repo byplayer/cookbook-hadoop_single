@@ -16,4 +16,9 @@
         the FileSystem implementation class.  The uri's authority is used to
         determine the host, port, etc. for a filesystem.</description>
     </property>
+
+    <property>
+      <name>io.compression.codecs</name>
+      <value>org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
 </configuration>
