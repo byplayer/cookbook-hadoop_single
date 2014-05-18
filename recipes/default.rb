@@ -6,6 +6,12 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+%w(gcc).each do |pkg|
+  dpkg_package pkg do
+    action :install
+  end
+end
+
 %w(java snappy).each do |cookbook|
   include_recipe cookbook
 end
