@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-%w(make g++).each do |pkg|
+%w(autoconf make g++).each do |pkg|
   apt_package pkg do
     action :install
   end
