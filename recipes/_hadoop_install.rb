@@ -5,7 +5,7 @@ bash 'stop_hadoop_all' do
     #{node['hadoop']['home']}/bin/stop-all.sh
   EOH
 
-  not_if 'jps | grep JobTracker', user: node['hadoop']['user']['name']
+  only_if 'jps | grep JobTracker', user: node['hadoop']['user']['name']
 end
 
 tar_name = "hadoop-#{node['hadoop']['version']}"
