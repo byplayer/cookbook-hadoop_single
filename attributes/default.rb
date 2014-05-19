@@ -3,9 +3,6 @@ default['java']['jdk_version'] = '6'
 default['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 
-# maven
-default['maven']['m2_home'] = '/opt/maven/'
-
 # hadoop
 default['hadoop']['version'] = '0.20.2-cdh3u5'
 default['hadoop']['checksum'] = '70001638f8ada92d94c1a11a4b025f7dc3fede72b6cedc3e2b9f316b6e8c161a'
