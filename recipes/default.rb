@@ -6,13 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-%w(autoconf make g++).each do |pkg|
-  apt_package pkg do
-    action :install
-  end
-end
-
-%w(java maven snappy).each do |cookbook|
+%w(java).each do |cookbook|
   include_recipe cookbook
 end
 
