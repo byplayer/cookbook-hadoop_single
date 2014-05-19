@@ -12,7 +12,7 @@
   end
 end
 
-%w(java snappy).each do |cookbook|
+%w(java maven snappy).each do |cookbook|
   include_recipe cookbook
 end
 
