@@ -1,4 +1,13 @@
 # install and setup hadoop
+bash 'stop_hadoop_all' do
+  user node['hadoop']['user']['name']
+  code <<-EOH
+    #{node['hadoop']['home']}/bin/stop-all.sh
+  EOH
+
+  not_if 'jps | grep JobTracker', user: node['hadoop']['user']['name']
+end
+
 tar_name = "hadoop-#{node['hadoop']['version']}"
 remote_file "#{Chef::Config['file_cache_path']}/#{tar_name}.tar.gz" do
   source "http://archive.cloudera.com/cdh/3/#{tar_name}.tar.gz"
@@ -69,4 +78,11 @@ bash 'hdfs_init' do
   EOH
 
   not_if { ::File.exist?(File.join(node['hadoop']['tmp'], 'dfs')) }
+end
+
+bash 'start_hadoop_all' do
+  user node['hadoop']['user']['name']
+  code <<-EOH
+    #{node['hadoop']['home']}/bin/start-all.sh
+  EOH
 end
